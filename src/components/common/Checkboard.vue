@@ -88,6 +88,7 @@ function getCheckboard (c1, c2, size) {
   right: 0px;
   bottom: 0px;
   left: 0px;
+  border-radius: 3px;
   background-size: contain;
 }
 </style>
