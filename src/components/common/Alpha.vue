@@ -20,6 +20,9 @@ import checkboard from './Checkboard.vue'
 
 export default {
   name: 'Alpha',
+  emits: [
+    'change'
+  ],
   props: {
     value: Object,
     onChange: Function

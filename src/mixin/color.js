@@ -58,6 +58,9 @@ function _colorChange (data, oldHue) {
 }
 
 export default {
+  emits: [
+    'input'
+  ],
   props: ['value'],
   data () {
     return {

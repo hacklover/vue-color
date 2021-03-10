@@ -57,6 +57,11 @@ import alpha from './common/Alpha.vue'
 export default {
   name: 'Photoshop',
   mixins: [colorMixin],
+  emits: [
+    'ok',
+    'cancel',
+    'reset'
+  ],
   props: {
     head: {
       type: String,

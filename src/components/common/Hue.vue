@@ -19,6 +19,9 @@
 <script>
 export default {
   name: 'Hue',
+  emits: [
+    'change'
+  ],
   props: {
     value: Object,
     direction: {

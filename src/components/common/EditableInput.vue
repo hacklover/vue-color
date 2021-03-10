@@ -16,6 +16,9 @@
 <script>
 export default {
   name: 'editableInput',
+  emits: [
+    'change'
+  ],
   props: {
     label: String,
     labelText: String,
