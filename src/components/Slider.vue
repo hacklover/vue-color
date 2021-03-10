@@ -1,7 +1,7 @@
 <template>
   <div role="application" aria-label="Slider color picker" class="vc-slider">
     <div class="vc-slider-hue-warp">
-      <hue v-model="colors" @change="hueChange"></hue>
+      <hue :value="colors" @change="hueChange"></hue>
     </div>
     <div class="vc-slider-swatches" role="group">
       <div class="vc-slider-swatch" v-for="(swatch, index) in normalizedSwatches" :key="index" :data-index="index"

@@ -1,15 +1,15 @@
 <template>
   <div role="application" aria-label="Sketch color picker" :class="['vc-sketch', disableAlpha ? 'vc-sketch__disable-alpha' : '']">
     <div class="vc-sketch-saturation-wrap">
-      <saturation v-model="colors" @change="childChange"></saturation>
+      <saturation :value="colors" @change="childChange"></saturation>
     </div>
     <div class="vc-sketch-controls">
       <div class="vc-sketch-sliders">
         <div class="vc-sketch-hue-wrap">
-          <hue v-model="colors" @change="childChange"></hue>
+          <hue :value="colors" @change="childChange"></hue>
         </div>
         <div class="vc-sketch-alpha-wrap" v-if="!disableAlpha">
-          <alpha v-model="colors" @change="childChange"></alpha>
+          <alpha :value="colors" @change="childChange"></alpha>
         </div>
       </div>
       <div class="vc-sketch-color-wrap">
@@ -35,19 +35,17 @@
         <ed-in label="a" :value="colors.a" :arrow-offset="0.01" :max="1" @change="inputChange"></ed-in>
       </div>
     </div>
-    <div class="vc-sketch-presets" role="group" aria-label="A color preset, pick one to set as current color">
-      <template v-for="c in presetColors">
+    <div v-if="presetColors.length" class="vc-sketch-presets" role="group" aria-label="A color preset, pick one to set as current color">
+      <template v-for="c in presetColors" :key="c">
         <div
           v-if="!isTransparent(c)"
           class="vc-sketch-presets-color"
           :aria-label="'Color:' + c"
-          :key="c"
           :style="{background: c}"
           @click="handlePreset(c)">
         </div>
         <div
           v-else
-          :key="c"
           :aria-label="'Color:' + c"
           class="vc-sketch-presets-color"
           @click="handlePreset(c)">
@@ -153,7 +151,6 @@ export default {
   width: 200px;
   padding: 10px 10px 0;
   box-sizing: initial;
-  background: #fff;
   border-radius: 4px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .15), 0 8px 16px rgba(0, 0, 0, .15);
 }
@@ -212,7 +209,7 @@ export default {
 }
 
 .vc-sketch-color-wrap .vc-checkerboard {
-  background-size: auto;
+  background-size: cover;
 }
 
 .vc-sketch-field {
@@ -222,10 +219,11 @@ export default {
 
 .vc-sketch-field .vc-input__input {
   width: 90%;
-  padding: 4px 0 3px 10%;
+  padding: 4px 5% 3px 5%;
   border: none;
   box-shadow: inset 0 0 0 1px #ccc;
   font-size: 10px;
+  text-align: center;
 }
 
 .vc-sketch-field .vc-input__label {
