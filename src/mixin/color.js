@@ -1,4 +1,4 @@
-import tinycolor from 'tinycolor2'
+import tinycolor from 'tinycolor2/tinycolor.js'
 
 function _colorChange (data, oldHue) {
   var alpha = data && data.a
